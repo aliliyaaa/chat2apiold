@@ -1,0 +1,10 @@
+fastapi
+curl_cffi
+uvicorn
+tiktoken
+python-dotenv
+websockets
+pillow
+pybase64
+jinja2
+APScheduler
