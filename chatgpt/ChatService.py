@@ -197,10 +197,12 @@ class ChatService:
                         raise HTTPException(status_code=403, detail="Failed to solve proof of work")
 
                 arkose_required = arkose.get('required')
-                if arkose_required:
+                if arkose_required and self.persona != "chatgpt-freeaccount":
+                    # logger.info("Arkose required: ignore")
                     if not self.arkose_token_url:
                         raise HTTPException(status_code=403, detail="Arkose service required")
                     arkose_dx = arkose.get("dx")
+                    
                     arkose_client = Client()
                     try:
                         r2 = await arkose_client.post(
